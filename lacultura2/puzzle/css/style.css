@@ -1,0 +1,17 @@
+﻿body {
+    font-family: 'Segoe UI', Calibri, Arial;
+    margin:0;
+	background-image:url('world.jpeg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+h2{
+    font-weight:normal;
+    text-align:center;
+	color: Wheat;
+}
+h3{
+    font-weight:normal;
+    margin:3px 0px;
+    text-align:center;
+}
