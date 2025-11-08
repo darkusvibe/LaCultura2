@@ -1,24 +1,27 @@
-// script.js — interactive behavior
+// script.js — Lacultura interactive behavior
 
 document.addEventListener('DOMContentLoaded', () => {
   /* THEME (persistent) */
   const themeToggle = document.getElementById('theme-toggle');
   const docEl = document.documentElement;
-  // Initialize icon state
+
   const setThemeIcon = () => {
-    const i = themeToggle.querySelector('i');
-    if (docEl.classList.contains('light-mode')) { i.className = 'fas fa-sun'; }
-    else { i.className = 'fas fa-moon'; }
+    const i = themeToggle?.querySelector('i');
+    if (!i) return;
+    i.className = docEl.classList.contains('light-mode') ? 'fas fa-sun' : 'fas fa-moon';
   };
-  // load saved theme
+
   try {
-    if (localStorage.getItem('lacultura-theme') === 'light') docEl.classList.add('light-mode');
-  } catch(e){}
+    if (localStorage.getItem('lacultura-theme') === 'light')
+      docEl.classList.add('light-mode');
+  } catch (e) {}
   setThemeIcon();
-  themeToggle.addEventListener('click', () => {
+  themeToggle?.addEventListener('click', () => {
     docEl.classList.toggle('light-mode');
     const isLight = docEl.classList.contains('light-mode');
-    try { localStorage.setItem('lacultura-theme', isLight ? 'light' : 'dark'); } catch(e){}
+    try {
+      localStorage.setItem('lacultura-theme', isLight ? 'light' : 'dark');
+    } catch (e) {}
     setThemeIcon();
   });
 
@@ -27,121 +30,88 @@ document.addEventListener('DOMContentLoaded', () => {
   const sidebar = document.getElementById('sidebar');
   burger?.addEventListener('click', () => sidebar.classList.toggle('open'));
 
-  /* HERO slideshow (auto + manual) */
+  /* HERO SLIDESHOW */
   const slides = Array.from(document.querySelectorAll('.slide'));
-  let idx = 0, interval = null;
-  const show = (n) => {
-    slides.forEach((s,i)=> s.classList.toggle('active', i===n));
-  };
-  const start = () => interval = setInterval(()=>{ idx = (idx+1) % slides.length; show(idx); }, 4500);
-  const stop = ()=> { if (interval) clearInterval(interval); interval = null; };
-  show(idx); start();
+  let idx = 0;
+  const show = (n) => slides.forEach((s, i) => s.classList.toggle('active', i === n));
+  show(idx);
+  setInterval(() => {
+    idx = (idx + 1) % slides.length;
+    show(idx);
+  }, 4500);
 
-  // manual controls
-  const prevBtn = document.getElementById('prev-slide');
-  const nextBtn = document.getElementById('next-slide');
-  prevBtn?.addEventListener('click', () => { stop(); idx = (idx - 1 + slides.length) % slides.length; show(idx); start(); });
-  nextBtn?.addEventListener('click', () => { stop(); idx = (idx + 1) % slides.length; show(idx); start(); });
+  document.getElementById('prev-slide')?.addEventListener('click', () => {
+    idx = (idx - 1 + slides.length) % slides.length;
+    show(idx);
+  });
+  document.getElementById('next-slide')?.addEventListener('click', () => {
+    idx = (idx + 1) % slides.length;
+    show(idx);
+  });
 
-  /* NARRATION (Web Speech API) - toggle speak/stop */
-  let speaking = false;
-  const narrateButtons = document.querySelectorAll('.narrate');
-  narrateButtons.forEach(btn => {
-    btn.addEventListener('click', async () => {
+  /* NARRATION (Web Speech API) */
+  document.querySelectorAll('.narrate').forEach((btn) => {
+    btn.addEventListener('click', () => {
       const id = btn.dataset.textId;
-      const el = document.getElementById(id);
-      if (!el) return;
-      const text = el.innerText.trim();
+      const text = document.getElementById(id)?.innerText.trim();
       if (!text) return;
-      if (speechSynthesis.speaking) { speechSynthesis.cancel(); speaking = false; btn.innerHTML = '<i class="fas fa-headphones"></i> Narrate'; return; }
-      const u = new SpeechSynthesisUtterance(text);
-      u.lang = 'en-GB';
-      u.rate = 1;
-      u.onend = () => { speaking = false; btn.innerHTML = '<i class="fas fa-headphones"></i> Narrate'; };
-      speaking = true;
-      btn.innerHTML = '<i class="fas fa-stop"></i> Stop';
-      speechSynthesis.speak(u);
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+        btn.innerHTML = '<i class="fas fa-headphones"></i> Narrate';
+      } else {
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'en-GB';
+        u.rate = 1;
+        u.onend = () =>
+          (btn.innerHTML = '<i class="fas fa-headphones"></i> Narrate');
+        btn.innerHTML = '<i class="fas fa-stop"></i> Stop';
+        speechSynthesis.speak(u);
+      }
     });
   });
 
-  /* VIDEO MODAL (open on thumbnail click) */
+  /* VIDEO MODAL */
   const modal = document.getElementById('video-modal');
   const iframe = document.getElementById('video-iframe');
-  const videoThumbs = document.querySelectorAll('.video .thumb');
-  const openVideo = (url) => {
-    iframe.src = url + '?autoplay=1&rel=0';
-    modal.style.display = 'flex';
-    modal.setAttribute('aria-hidden','false');
-  };
-  videoThumbs.forEach(t => {
-    t.addEventListener('click', () => openVideo(t.dataset.video));
+  document.querySelectorAll('.video .thumb').forEach((thumb) => {
+    thumb.addEventListener('click', () => {
+      iframe.src = thumb.dataset.video + '?autoplay=1';
+      modal.style.display = 'flex';
+    });
   });
   document.getElementById('video-close')?.addEventListener('click', () => {
-    iframe.src = ''; modal.style.display = 'none'; modal.setAttribute('aria-hidden','true');
+    iframe.src = '';
+    modal.style.display = 'none';
   });
-  modal.addEventListener('click', (e) => { if (e.target === modal) { iframe.src=''; modal.style.display='none'; } });
-
-  /* LOGIN modal & profile (simple localStorage demo) */
-  const loginOpen = document.getElementById('login-open');
-  const loginModal = document.getElementById('login-modal');
-  const loginClose = document.getElementById('login-close');
-  const saveBtn = document.getElementById('save-profile');
-  const logoutBtn = document.getElementById('logout');
-  const usernameInput = document.getElementById('username-input');
-  const profileNameEl = document.getElementById('profile-name');
-  const profileView = document.getElementById('profile-view');
-  const profileForm = document.getElementById('profile-form');
-  const viewName = document.getElementById('view-name');
-  // open/close
-  loginOpen?.addEventListener('click', () => {
-    loginModal.style.display = 'flex';
-    const user = localStorage.getItem('lacultura-user');
-    if (user) { profileForm.style.display='none'; profileView.style.display='block'; viewName.textContent = user; profileNameEl.textContent = user; }
-    else { profileForm.style.display='block'; profileView.style.display='none'; }
-  });
-  loginClose?.addEventListener('click', ()=> loginModal.style.display='none');
-  // save profile
-  saveBtn?.addEventListener('click', () => {
-    const name = usernameInput.value.trim();
-    if (!name) return alert('Enter a display name');
-    localStorage.setItem('lacultura-user', name);
-    profileNameEl.textContent = name; viewName.textContent = name;
-    profileForm.style.display='none'; profileView.style.display='block';
-  });
-  logoutBtn?.addEventListener('click', () => {
-    localStorage.removeItem('lacultura-user');
-    profileNameEl.textContent = 'Login';
-    profileForm.style.display='block'; profileView.style.display='none';
-    loginModal.style.display='none';
-  });
-
-  // update displayed name at load
-  const stored = localStorage.getItem('lacultura-user');
-  if (stored) profileNameEl.textContent = stored;
-
-  /* Close modals via Escape */
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      if (modal.style.display === 'flex') { iframe.src=''; modal.style.display='none'; }
-      if (loginModal.style.display === 'flex') loginModal.style.display='none';
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      iframe.src = '';
+      modal.style.display = 'none';
     }
   });
 
-  /* close login modal click-out */
-  loginModal.addEventListener('click', (e) => { if (e.target === loginModal) loginModal.style.display='none'; });
-
-});
-// Learn More toggle
-document.querySelectorAll(".attire-card .learn-more").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const card = btn.closest(".attire-card");
-    card.classList.toggle("open");
+  /* ATTIRE LEARN MORE / BUY NOW */
+  document.querySelectorAll('.attire-card .learn-more').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      btn.closest('.attire-card').classList.toggle('open');
+    });
   });
-});
-
-// Buy Now placeholder
-document.querySelectorAll(".attire-card .buy-now").forEach(btn => {
-  btn.addEventListener("click", () => {
-    alert("Buy Now feature coming soon!");
+  document.querySelectorAll('.attire-card .buy-now').forEach((btn) => {
+    btn.addEventListener('click', () => alert('🛍️ Coming soon!'));
   });
+
+  /* PROFILE DROPDOWN TOGGLE */
+  const navProfilePic = document.getElementById('nav-profile-pic');
+  const dropdown = document.getElementById('profile-dropdown');
+
+  if (navProfilePic && dropdown) {
+    navProfilePic.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+    // close dropdown if clicked outside
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
+    });
+  }
 });

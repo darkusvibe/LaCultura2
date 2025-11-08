@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lacultura | Kenyan Culture Quiz</title>
+  <link rel="stylesheet" href="quiz.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+
+
+  <div class="quiz-container">
+    <header>
+      <h1>Lacultura Quiz</h1>
+      <p>Test your knowledge of Kenya’s diverse cultures 🇰🇪</p>
+    </header>
+
+    <section id="start-screen">
+      <h2>Select Difficulty</h2>
+      <div class="difficulty">
+        <button data-level="easy">Easy</button>
+        <button data-level="normal">Normal</button>
+        <button data-level="hard">Hard</button>
+      <!-- </div> -->
+	
+    </section>
+
+    <section id="quiz-screen" style="display:none;">
+      <div id="question-box">
+        <h3 id="question"></h3>
+        <div id="options"></div>
+      </div>
+      <button id="next-btn">Next</button>
+    </section>
+
+    <section id="result-screen" style="display:none;">
+      <h2>Quiz Complete!</h2>
+      <p>Your score: <span id="score"></span></p>
+      <button id="restart-btn">Try Again</button>
+    </section>
+  </div>
+
+  <script src="quiz.js"></script>
+</body>
+</html>

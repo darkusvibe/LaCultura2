@@ -49,52 +49,104 @@
 
     <nav>
       <a href="#hero"><i class="fas fa-house"></i><span>Home</span></a>
-      <a href="#stories"><i class="fas fa-book-open"></i><span>Stories</span></a>
+      <a href="stories/stories.html"><i class="fas fa-book-open"></i><span>Stories</span></a>
       <a href="#attire"><i class="fas fa-shirt"></i><span>Attire</span></a>
-      <a href="#videos"><i class="fas fa-video"></i><span>Videos</span></a>
+      <a href="VIDEOS/videos.html"><i class="fas fa-video"></i><span>Videos</span></a>
       <a href="#games"><i class="fas fa-gamepad"></i><span>Games</span></a>
-       <a href="#blogs"><i class="fas fa-blog"></i><span>Blogs</span></a>
+	   <a href="#games"><i class="fas fa-blog"></i><span>Blog</span></a>
       <a href="#team"><i class="fas fa-users"></i><span>Team</span></a>
       <a href="#donate"><i class="fas fa-hand-holding-heart"></i><span>Support</span></a>
     </nav>
 
     <div class="sidebar-footer">
-      <button id="sidebar-logout" class="ghost">Log out</button>
+   
     </div>
   </aside>
 
   <!-- MAIN -->
   <div id="app">
-    <!-- TOPBAR -->
-    <header id="topbar">
-      <div class="left">
-        <button id="burger" class="icon-btn" aria-label="Open menu"><i class="fas fa-bars"></i></button>
-        <div class="small-brand">Lacultura</div>
+   <!-- 🌍 TOPBAR -->
+<div id="topbar">
+  <div class="left">
+    <button id="menu-btn" class="icon-btn"><i class="fas fa-bars"></i></button>
+    <h1 class="brand-title">Lacultura</h1>
+  </div>
+
+  <div class="right" id="profile-area">
+    <button id="open-login" class="btn ghost">Login</button>
+
+    <!-- Logged in user info -->
+    <div id="user-info" class="user-info" style="display:none;">
+      <img id="nav-profile-pic" src="" alt="Profile" />
+      <span id="nav-username"></span>
+
+      <!-- Dropdown -->
+      <div id="profile-dropdown" class="dropdown">
+        <a href="#" id="view-profile">View Profile</a>
+        <a href="#" id="logout-btn">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 🔐 LOGIN MODAL -->
+<div id="login-modal" class="modal" aria-hidden="true">
+  <div class="modal-inner login-modal">
+    <button class="modal-close" id="login-close"><i class="fas fa-times"></i></button>
+
+    <div class="login-container">
+      <h3 class="login-title">Welcome to <span class="accent">Lacultura</span></h3>
+      <p class="login-sub">Login or create an account to personalize your experience</p>
+
+      <div class="tabs">
+        <button class="tab active" id="tab-login">Login</button>
+        <button class="tab" id="tab-register">Register</button>
       </div>
 
-      <div class="right">
-        <div id="profile-area" class="profile-area">
-          <button id="login-open" class="btn"> <i class="fas fa-user"></i> <span id="profile-name">Login</span></button>
-        </div>
-
-        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
-          <i class="fas fa-moon"></i>
-        </button>
+      <!-- LOGIN FORM -->
+      <div class="form-section" id="login-form">
+        <input type="email" id="login-email" placeholder="Email" required />
+        <input type="password" id="login-password" placeholder="Password" required />
+        <button id="login-btn" class="btn full">Login</button>
       </div>
-    </header>
+
+      <div class="divider-line"><span>or</span></div>
+      <button id="google-btn" class="btn google full">
+        <i class="fab fa-google"></i> Continue with Google
+      </button>
+
+      <!-- REGISTER FORM -->
+      <div class="form-section" id="register-form" style="display:none;">
+        <input type="text" id="register-name" placeholder="Full Name" required />
+        <input type="email" id="register-email" placeholder="Email" required />
+        <input type="password" id="register-password" placeholder="Password" required />
+        <button id="register-btn" class="btn full">Register</button>
+      </div>
+
+      <!-- PROFILE VIEW -->
+      <div id="profile-view" style="display:none; text-align:center;">
+        <img id="profile-pic" src="images/default-avatar.png" alt="Profile" style="width:90px;height:90px;border-radius:50%;border:3px solid var(--accent1);object-fit:cover;margin-bottom:.5rem;">
+        <p class="welcome">👋🏾 Hello, <strong id="view-name"></strong></p>
+        <button id="logout-btn" class="btn ghost full">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
     <!-- CONTENT -->
     <main id="main-content">
       <!-- HERO: slideshow with inline SVG decorative divider -->
       <section id="hero" class="hero">
         <div class="slideshow">
-          <div class="slide active" style="background-image:url('images/maasai.jpg')">
+          <div class="slide active" style="background-image:url('images/maasai.png')">
             <div class="caption"><strong>Maasai Warriors</strong><span>— Resilience, beadwork & ceremonies</span></div>
           </div>
-          <div class="slide" style="background-image:url('images/swahili.jpg')">
+          <div class="slide" style="background-image:url('images/swahili.jpeg')">
             <div class="caption"><strong>Swahili Coast</strong><span>— History, dhow culture, coral towns</span></div>
           </div>
-          <div class="slide" style="background-image:url('images/kikuyu.jpg')">
+          <div class="slide" style="background-image:url('images/gikuyu_mumbi.jpg')">
             <div class="caption"><strong>Kikuyu Origins</strong><span>— Gikuyu & Mumbi</span></div>
           </div>
         </div>
@@ -156,7 +208,7 @@
   <h2>👗 Traditional Attire</h2>
 
   <div class="card attire-card">
-    <img src="images/maasai.jpg" alt="Maasai Shuka"/>
+    <img src="images/shuka.jpeg" alt="Maasai Shuka"/>
     <h3>Maasai Shuka</h3>
     <p>Iconic red shuka worn by Maasai warriors and elders.</p>
     <button class="learn-more">Learn More</button>
@@ -169,7 +221,7 @@
   </div>
 
   <div class="card attire-card">
-    <img src="images/kikuyu.jpg" alt="Kikuyu Garments"/>
+    <img src="images/kikuyu.jpeg" alt="Kikuyu Garments"/>
     <h3>Kikuyu Garments</h3>
     <p>Made from animal skins, decorated with cowrie shells.</p>
     <button class="learn-more">Learn More</button>
@@ -181,7 +233,7 @@
   </div>
 
   <div class="card attire-card">
-    <img src="images/swahili.jpg" alt="Swahili Kanzu"/>
+    <img src="images/kanzu.jpeg" alt="Swahili Kanzu"/>
     <h3>Swahili Kanzu</h3>
     <p>A long white robe worn by Swahili men, often during ceremonies.</p>
     <button class="learn-more">Learn More</button>
@@ -193,7 +245,7 @@
   </div>
 
   <div class="card attire-card">
-    <img src="images/turkana.jpg" alt="Turkana Beadwork"/>
+    <img src="images/turkana.jpeg" alt="Turkana Beadwork"/>
     <h3>Turkana Beadwork</h3>
     <p>Colorful beaded necklaces worn by Turkana women.</p>
     <button class="learn-more">Learn More</button>
@@ -210,16 +262,16 @@
 
         <div class="grid">
           <div class="card video">
-            <div class="thumb" data-video="https://www.youtube.com/embed/x9H2L_9ZsM8">
-              <img src="images/video-maasai-thumb.jpg" alt="Maasai Dance">
+            <div class="thumb" data-video="https://youtu.be/cC9TbK6oETk?si=VldoMfEYyMfGAdZM">
+              <img src="images/masai.jpeg" alt="Maasai Dance">
               <div class="play"><i class="fas fa-play"></i></div>
             </div>
             <h3>Maasai Dance</h3>
           </div>
 
           <div class="card video">
-            <div class="thumb" data-video="https://www.youtube.com/embed/YkuqC9RzJNE">
-              <img src="images/video-swahili-thumb.jpg" alt="Swahili Coast">
+            <div class="thumb" data-video="https://www.yout">
+              <img src="images/swa.jpeg" alt="Swahili Coast">
               <div class="play"><i class="fas fa-play"></i></div>
             </div>
             <h3>Swahili Culture</h3>
@@ -227,16 +279,29 @@
         </div>
       </section>
 
-      <!-- GAMES (placeholder) -->
-      <section id="games" class="section">
-        <header class="section-head"><h2>Games</h2><p>Learning through play: coming soon — puzzles, quizzes & memory match.</p></header>
-        <div class="grid">
-          <div class="card"><h3>Puzzle</h3><p>Interactive image puzzle</p></div>
-          <div class="card"><h3>Quiz</h3><p>Test your knowledge</p></div>
-        </div>
-      </section>
+    <!-- GAMES (placeholder) -->
+<section id="games" class="section">
+  <header class="section-head">
+    <h2>Games</h2>
+    <p>Learning through play: coming soon — puzzles, quizzes & memory match.</p>
+  </header>
 
-      <!-- BLOGS-->
+  <div class="grid">
+    <div class="card">
+      <h3>Puzzle</h3>
+      <p>Interactive image puzzle</p>
+      <a href="puzzle/puzzle.html" class="btn">Take the Puzzle</a>
+    </div>
+
+    <div class="card">
+      <h3>Quiz</h3>
+      <p>Test your knowledge of Kenya’s diverse cultures and traditions.</p>
+      <a href="quiz.html" class="btn">Take the Quiz</a>
+    </div>
+  </div>
+</section>
+
+   <!-- BLOGS-->
       <section id="blogs" class="section-head">
         <header><i class="fas fa-archive" style="font-size:28px;color:var(--accent)"></i><h2>Blogs</h2></header>
         <div class="grid">
@@ -258,16 +323,91 @@
            <p>Clothing has always been a powerful expression of culture. Our archives showcase traditional garments from various regions, each piece reflecting artistry, status, and belief. By preserving these designs, we honor the creativity and identity of our people.</p>
         <footer style="font-family: 'Georgia', serif;color:white; text-align:center; padding:6px;"><p>&copy; Author:Wanzua Mwitingi</p></footer>
          </article>
+         <article class="card" id="traditional-attire">
+            <div class="meta"><i class="fas fa-book"></i></div>
+            <h3>Keeping Heritage Alive </h3>
+            <p>Community-based cultural archives empower people to tell their own stories. They give locals control over how their traditions and histories are represented. From oral histories and music recordings to handmade crafts and rituals, community archives celebrate everyday life. They remind us that culture is not just something to remember — it is something to live and share.</p>
+            <footer style="font-family: 'Georgia', serif;color:white; text-align:center; padding:6px;"><p>&copy; Author:Pendo Kache</p></footer>
+         </article>
+         <article class="card" id="traditional-attire">
+            <div class="meta"><i class="fas fa-laptop"></i></div>
+            <h3>Blending Tradition with Technology</h3>
+            <p>Today, many institutions are combining traditional and digital methods to preserve history. Scanning, photography, and online catalogues make traditional archives more accessible while maintaining the integrity of the originals. This blend ensures that even as we move forward with technology, the wisdom and authenticity of traditional archives remain at the heart of cultural preservation.</p>
+            <footer style="font-family: 'Georgia', serif;color:white; text-align:center; padding:6px;"><p>&copy; Author:Parsanka Olesupat</p></footer>
+         </article>
+         <article class="card" id="traditional-attire">
+            <div class="meta"><i class="fas fa-archive"></i></div>
+            <h3>Cultural Archives as Tools for Education</h3>
+            <p>Schools and learning institutions are increasingly using cultural archives to teach history and identity. Instead of relying solely on textbooks, students can explore real-life artifacts, oral histories, and visual records. This hands-on approach helps them appreciate diversity and understand the deeper meaning behind customs and traditions. Cultural archives, therefore, are not just historical resources — they are powerful tools for learning and empathy.</p>
+            <footer style="font-family: 'Georgia', serif;color:white; text-align:center; padding:6px;"><p>&copy; Author:Nzioka Nzioki</p></footer>
+         </article> 
         </div>
       </section>
+
+
+ <section class="section" id="ai-generator">
+  <div class="section-head">
+    <h2>AI Art Generator</h2>
+    <p>Describe what you want to see — our AI will bring it to life inspired by African culture.</p>
+  </div>
+
+  <div class="ai-box">
+    <input id="prompt-input" type="text" placeholder="e.g. Maasai warrior at sunrise in traditional attire" />
+    <button id="generate-btn" class="btn">Generate Image</button>
+  </div>
+
+  <div class="generated-output">
+    <div id="loading-text" style="display:none;">🎨 Creating your artwork, please wait...</div>
+    <img id="generated-image" alt="Generated AI art" style="display:none; border-radius:12px; margin-top:1rem; width:100%; max-width:600px;" />
+  </div>
+</section>
+<script>
+const generateBtn = document.getElementById("generate-btn");
+const promptInput = document.getElementById("prompt-input");
+const generatedImage = document.getElementById("generated-image");
+const loadingText = document.getElementById("loading-text");
+
+generateBtn.addEventListener("click", async () => {
+  const prompt = promptInput.value.trim();
+  if (!prompt) return alert("Please enter a prompt first!");
+
+  generatedImage.style.display = "none";
+  loadingText.style.display = "block";
+
+  try {
+    // Call your FastAPI server (make sure the URL matches your setup)
+const response = await fetch(`http://127.0.0.1:8000/generate?prompt=${encodeURIComponent(prompt)}`);
+
+
+    if (!response.ok) throw new Error("Error generating image");
+
+    // Convert response to blob (binary image)
+    const blob = await response.blob();
+    const imageURL = URL.createObjectURL(blob);
+
+    // Display the generated image
+    generatedImage.src = imageURL;
+    generatedImage.style.display = "block";
+  } catch (error) {
+    alert("⚠️ " + error.message);
+  } finally {
+    loadingText.style.display = "none";
+  }
+});
+</script>
 
 
       <!-- TEAM -->
       <section id="team" class="section">
         <header class="section-head"><h2>Team</h2><p>The people behind Lacultura.</p></header>
         <div class="grid">
-          <div class="card"><img src="images/team1.jpg" alt=""><h3>Amina</h3><p>Founder, cultural researcher</p></div>
-          <div class="card"><img src="images/team2.jpg" alt=""><h3>Brian</h3><p>Developer</p></div>
+          <div class="card"><img src="images/jeru.jpg" alt=""><h3>Jerusha Ndanu</h3><p>Founder</p></div>
+		     <div class="card"><img src="images/freddy.jpg" alt=""><h3>Fred Kimpei</h3><p>Co-Founder, Developer</p></div>
+          <div class="card"><img src="images/me.jpg" alt=""><h3>Solomon Teko</h3><p>Developer</p></div>
+		   <div class="card"><img src="images/aliceee.jpg" alt=""><h3>Alice Ngugi</h3><p>Developer,  cultural researcher</p></div>
+          <div class="card"><img src="images/serianae.jpg" alt=""><h3>Felista Serianae</h3><p>Developer, cultural researcher </p></div>
+		
+          
         </div>
       </section>
 
@@ -296,25 +436,218 @@
     </div>
   </div>
 
-  <!-- LOGIN MODAL -->
-  <div id="login-modal" class="modal" aria-hidden="true">
-    <div class="modal-inner">
-      <button class="modal-close" id="login-close"><i class="fas fa-times"></i></button>
-      <div class="login-box">
-        <h3>Login / Profile</h3>
-        <div id="profile-form">
-          <input id="username-input" placeholder="Enter your name" />
-          <div class="actions">
-            <button id="save-profile" class="btn">Save</button>
-          </div>
-        </div>
-        <div id="profile-view" style="display:none;">
-          <p>Hello, <strong id="view-name"></strong></p>
-          <button id="logout" class="btn ghost">Logout</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
+
+
+
+<script type="module">
+  // 🔥 Import Firebase SDKs
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged,
+    updateProfile,
+    GoogleAuthProvider,
+    signInWithPopup
+  } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+
+  // ⚙️ Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDuymdaY-TxltRrF3NuY9kP-TuGJJg3kQE",
+    authDomain: "lacultura-ba185.firebaseapp.com",
+    projectId: "lacultura-ba185",
+    storageBucket: "lacultura-ba185.firebasestorage.app",
+    messagingSenderId: "1032413671701",
+    appId: "1:1032413671701:web:211519ca54f89c5e01f91c",
+    measurementId: "G-7GB7Y2FYD6"
+  };
+
+  // 🔥 Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  // 🎯 Element References
+  const loginModal = document.getElementById("login-modal");
+  const loginBtn = document.getElementById("login-btn");
+  const registerBtn = document.getElementById("register-btn");
+  const googleBtn = document.getElementById("google-btn");
+  const logoutBtn = document.getElementById("logout-btn");
+  const loginClose = document.getElementById("login-close");
+  const openLogin = document.getElementById("open-login");
+
+  const loginForm = document.getElementById("login-form");
+  const registerForm = document.getElementById("register-form");
+  const profileView = document.getElementById("profile-view");
+  const viewName = document.getElementById("view-name");
+  const profilePic = document.getElementById("profile-pic");
+
+  const navUserInfo = document.getElementById("user-info");
+  const navProfilePic = document.getElementById("nav-profile-pic");
+  const navUsername = document.getElementById("nav-username");
+
+  // 🪟 Open and close modal
+  openLogin?.addEventListener("click", () => (loginModal.style.display = "flex"));
+  loginClose?.addEventListener("click", () => (loginModal.style.display = "none"));
+  window.addEventListener("click", (e) => {
+    if (e.target === loginModal) loginModal.style.display = "none";
+  });
+
+  // 🧾 Register with Email/Password
+  registerBtn?.addEventListener("click", async () => {
+    const name = document.getElementById("register-name").value.trim();
+    const email = document.getElementById("register-email").value.trim();
+    const password = document.getElementById("register-password").value.trim();
+    if (!name || !email || !password)
+      return alert("⚠️ Please fill in all fields");
+    if (password.length < 6)
+      return alert("🔒 Password must be at least 6 characters long");
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, { displayName: name });
+      alert("🎉 Registration successful!");
+    } catch (error) {
+      alert("❌ " + error.message);
+    }
+  });
+
+  // 🔐 Login with Email/Password
+  loginBtn?.addEventListener("click", async () => {
+    const email = document.getElementById("login-email").value.trim();
+    const password = document.getElementById("login-password").value.trim();
+    if (!email || !password) return alert("⚠️ Enter both email and password");
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert("✅ Logged in successfully!");
+    } catch (error) {
+      alert("❌ " + error.message);
+    }
+  });
+
+  // 🌍 Login with Google
+  googleBtn?.addEventListener("click", async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      alert(`👋🏾 Welcome ${user.displayName}!`);
+    } catch (error) {
+      alert("❌ " + error.message);
+    }
+  });
+
+  // 🚪 Logout
+  logoutBtn?.addEventListener("click", async () => {
+    await signOut(auth);
+    alert("👋🏾 Logged out successfully!");
+  });
+
+  // 🔁 Switch Tabs
+  document.getElementById("tab-login")?.addEventListener("click", () => {
+    document.getElementById("tab-login").classList.add("active");
+    document.getElementById("tab-register").classList.remove("active");
+    loginForm.style.display = "block";
+    registerForm.style.display = "none";
+  });
+
+  document.getElementById("tab-register")?.addEventListener("click", () => {
+    document.getElementById("tab-register").classList.add("active");
+    document.getElementById("tab-login").classList.remove("active");
+    registerForm.style.display = "block";
+    loginForm.style.display = "none";
+  });
+
+  // 👁️ Handle Auth State
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // ✅ User logged in
+      const displayName = user.displayName || user.email;
+      const photo = user.photoURL || "images/default-avatar.png";
+
+      viewName.textContent = displayName;
+      profilePic.src = photo;
+      navProfilePic.src = photo;
+      navUsername.textContent = displayName.split("@")[0];
+
+      profileView.style.display = "block";
+      loginForm.style.display = "none";
+      registerForm.style.display = "none";
+
+      openLogin.style.display = "none";
+      navUserInfo.style.display = "flex";
+    } else {
+      // ❌ No user
+      profileView.style.display = "none";
+      loginForm.style.display = "block";
+      registerForm.style.display = "none";
+
+      openLogin.style.display = "inline-flex";
+      navUserInfo.style.display = "none";
+    }
+  });
+  // === Profile Dropdown Toggle ===
+const userInfo = document.querySelector(".user-info");
+
+if (userInfo) {
+  userInfo.addEventListener("click", (e) => {
+    e.stopPropagation(); // prevent click from bubbling
+    userInfo.classList.toggle("open");
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!userInfo.contains(e.target)) {
+      userInfo.classList.remove("open");
+    }
+  });
+}
+
+</script>
+
+
+<script>
+  // Modal open/close logic
+  document.addEventListener("DOMContentLoaded", () => {
+    const loginModal = document.getElementById("login-modal");
+    const openLogin = document.getElementById("open-login");
+    const closeLogin = document.getElementById("login-close");
+
+    if (!loginModal || !openLogin || !closeLogin) {
+      console.error("⚠️ Missing login modal or trigger elements!");
+      return;
+    }
+
+    // ✅ Open the modal
+    openLogin.addEventListener("click", () => {
+      loginModal.style.display = "flex";
+      loginModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden"; // prevent background scroll
+    });
+
+    // ✅ Close when clicking the X
+    closeLogin.addEventListener("click", () => {
+      loginModal.style.display = "none";
+      loginModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "auto";
+    });
+
+    // ✅ Close when clicking outside modal-inner
+    loginModal.addEventListener("click", (e) => {
+      if (e.target === loginModal) {
+        loginModal.style.display = "none";
+        loginModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "auto";
+      }
+    });
+  });
+</script>
+
 
   <!-- Inline decorative SVGs for dividers (multi-color support via CSS) -->
   <svg style="display:none;">

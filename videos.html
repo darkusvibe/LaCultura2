@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Cultural videos</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #000;
+    --card-bg: rgba(255,255,255,0.03);
+    --muted: rgba(255,255,255,0.65);
+    --accent: rgba(255,255,255,0.08);
+    --radius: 10px;
+    --gap: 18px;
+    font-family: 'Cinzel Decorative', serif;
+  }
+
+  html,body{
+    height:100%;
+    margin:0;
+    background:var(--bg);
+    color:#fff;
+  }
+
+  .wrap{
+    max-width:1200px;
+    margin:36px auto;
+    padding:24px;
+  }
+
+h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 28px;
+  text-align: center;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ffcc00, #ff6600);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+}
+
+  .section{
+    margin-bottom:28px;
+  }
+  .grid{
+    display:grid;
+    gap:var(--gap);
+  }
+
+  .grid.three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid.one {
+    grid-template-columns: 1fr;
+    justify-items:center;
+  }
+
+  .grid.small-three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card{
+    background:var(--card-bg);
+    border-radius:var(--radius);
+    padding:12px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.03);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .video-wrap{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+    border-radius:8px;
+    overflow:hidden;
+  }
+
+  .video-wrap video{
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    display:block;
+    background:#000;
+  }
+
+  .title{
+    font-weight:700;
+    font-size:18px;
+    margin:0;
+    text-align:center;
+    background:linear-gradient(90deg,#ffcc00,#ff6600);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+
+  .desc{
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #ffffff;
+  background: #000;
+  padding: 14px 18px;
+  border-radius: 8px;
+  text-transform: none;
+  font-weight: 400;
+  }
+
+  .small {
+    padding:8px;
+  }
+  .small .video-wrap{ padding-top:56.25%; border-radius:6px; }
+
+  @media (max-width:900px){
+    .grid.three, .grid.small-three{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width:520px){
+    .grid.three, .grid.small-three{ grid-template-columns: 1fr; }
+    .wrap{ padding:16px; }
+  }
+
+  .label{
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
+
+  footer{
+    margin-top:14px;
+    font-size:12px;
+    color:var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Cultural Videos</h1>
+<section class="section" aria-label="">
+<div class="label"></div>
+<div class="grid three">
+<article class="card">
+<div class="video-wrap">
+<video controls preload="metadata" poster="maasai.jpg">
+ <source src="MAASAI.mp4" type="video/mp4">
+ </video>
+ </div>
+ <h3 class="title">Maasai</h3>
+ <p class="desc">A glimpse into Maasai rites and beadwork. Bold singing and jumping ceremonies highlight community pride. Traditional dress and pastoral life are shown with close-up detail.</p>
+  </article>
+<article class="card">
+  <div class="video-wrap">
+  <video controls preload="metadata" poster="luhya.jpg">
+   <source src="LUHYA.mp4" type="video/mp4">
+  </video>
+   </div>
+   <h3 class="title">Luhya</h3>
+    <p class="desc">A short look at Luhya music, dance and harvest traditions. Energetic drumming accompanies group dances. The clip highlights family and communal celebrations.</p>
+  </article>
+  <article class="card">
+  <div class="video-wrap">
+   <video controls preload="metadata" poster="luoo.jfif">
+   <source src="LUO.mp4" type="video/mp4">
+    </video>
+   </div>
+    <h3 class="title">Luo</h3>
+    <p class="desc">Fishing life on the lake, melodic songs and storytelling. The video shows canoe scenes and traditional rhythms. It emphasizes lakeside community life and oral history.</p>
+    </article>
+      </div>
+    </section>
+    <section class="section" aria-label="">
+      <div class="label"></div>
+      <div class="grid three">
+        <article class="card">
+    <div class="video-wrap">
+        <video controls preload="metadata" poster="kamba.jfif">
+     <source src="KAMBA.mp4" type="video/mp4">
+            </video>
+  </div>
+   <h3 class="title">Kamba</h3>
+   <p class="desc">Showcases Kamba woodcarving and craft-making. Gentle narration explains artisanal life and cultural motifs. Community scenes highlight everyday creativity.</p>
+    </article>
+    <article class="card">
+    <div class="video-wrap">
+     <video controls preload="metadata" poster="meru.jfif">
+     <source src="MERU.mp4" type="video/mp4">
+      </video>
+    </div>
+     <h3 class="title">Meru</h3>
+          <p class="desc">Highland rituals and agricultural ceremonies are presented. The clip captures ceremonies tied to planting seasons. It emphasizes ancestral ties to the land.</p>
+   </article>
+     <article class="card">
+    <div class="video-wrap">
+     <video controls preload="metadata" poster="kisiii.jfif">
+     <source src="KISII.mp4" type="video/mp4">
+      </video>
+      </div>
+     <h3 class="title">Kisii</h3>
+     <p class="desc">A short feature on Kisii soapstone carving and marketplace life. Intimate close-ups show artisans at work. The piece highlights craft, trade, and daily rhythms.</p>
+     </article>
+    </div>
+    </section>
+    <section class="section" aria-label="">
+   <div class="label"></div>
+    <div class="grid one">
+    <article class="card" style="max-width:820px;">
+    <div class="video-wrap">
+      <video controls preload="metadata" poster="swahili.jfif">
+     <source src="SWAHILI.mp4" type="video/mp4">
+    </video>
+   </div>
+   <h3 class="title">Swahili</h3>
+   <p class="desc">A seaside montage of Swahili coastal culture, taarab music and architecture. The clip blends markets, dhow boats and local storytelling. It celebrates coastal fusion and history.</p>
+   </article>
+      </div>
+    </section>
+    <section class="section" aria-label="">
+      <div class="label"></div>
+      <div class="grid small-three">
+  <article class="card small">
+   <div class="video-wrap">
+   <video controls preload="metadata" poster="somali.jfif">
+    <source src="SOMALI.mp4" type="video/mp4">
+    </video>
+    </div>
+   <h3 class="title">Somali</h3>
+    <p class="desc">A short scene of Somali poetry and coastal traditions. Rich oral verse accompanies everyday life. The video highlights resilience and cultural continuity.</p>
+   </article>
+   <article class="card small">
+   <div class="video-wrap">
+    <video controls preload="metadata" poster="kikuyu.jfif">
+    <source src="KIKUYU.mp4" type="video/mp4">
+    </video>
+     </div>
+    <h3 class="title">Kikuyu</h3>
+      <p class="desc">A brief look at Kikuyu ceremonies and farming practices. The footage shows ritual songs and family gatherings. It emphasizes land stewardship and heritage.</p>        </article>
+        <article class="card small">
+      <div class="video-wrap">
+    <video controls preload="metadata" poster="kalenjin.jfif">
+     <source src="KALENJIN.mp4" type="video/mp4">
+    </video>
+   </div>
+   <h3 class="title">Kalenjin</h3>
+  <p class="desc">Highlights athletic tradition and village festivities. Running culture and track stories weave with community life. The clip spotlights training, pride and local heroes.</p>
+  </article>
+  </div>
+ </section>
+  </div>
+</body>
+</html>

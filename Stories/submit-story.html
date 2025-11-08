@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Your Story | La Cultura Kenya</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #111;
+      --text-light: #eee;
+      --accent1: #FF7F00; /* orange */
+      --accent2: #009444; /* green */
+      --accent3: #E63946; /* red */
+      --card-bg: rgba(255,255,255,0.05);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Hero / Header */
+    header {
+      text-align: center;
+      padding: 3.5rem 1rem;
+      background: linear-gradient(135deg, rgba(255,127,0,0.15), rgba(0,148,68,0.25));
+      border-bottom: 2px solid var(--accent2);
+    }
+
+    header h1 {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 2.8rem;
+      color: var(--accent1);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-block;
+      margin: 2rem 0 0 10%;
+      text-decoration: none;
+      background: linear-gradient(90deg,var(--accent2),var(--accent1));
+      color: #fff;
+      padding: 0.8rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    /* Form container */
+    form {
+      background: var(--card-bg);
+      max-width: 720px;
+      margin: 3rem auto;
+      padding: 2.5rem 2.5rem 3rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 1.2rem;
+      font-weight: 600;
+      color: var(--accent2);
+      font-size: 1rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.9rem;
+      margin-top: 0.5rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background-color: rgba(255,255,255,0.05);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent1);
+      box-shadow: 0 0 6px var(--accent1);
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 160px;
+    }
+
+    input[type="file"] {
+      border: 1px dashed rgba(255,255,255,0.3);
+      background-color: rgba(255,255,255,0.08);
+      color: #ccc;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="file"]:hover {
+      border-color: var(--accent1);
+    }
+
+    /* Dropdown (Story Type) */
+    select {
+      padding: 0.7rem 2.2rem 0.7rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--accent2);
+      background: linear-gradient(135deg, rgba(0,148,68,0.2), rgba(255,127,0,0.2));
+      color: var(--text-light);
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+      appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23FFFFFF" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1rem;
+    }
+
+    select:hover {
+      border-color: var(--accent1);
+      background: linear-gradient(135deg, rgba(255,127,0,0.3), rgba(0,148,68,0.3));
+      cursor: pointer;
+    }
+
+    select option {
+      background-color: #111;
+      color: #fff;
+      padding: 0.6rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Submit button */
+    button {
+      margin-top: 2rem;
+      background: linear-gradient(90deg,var(--accent2),var(--accent1));
+      color: #fff;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      letter-spacing: 0.5px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      color: rgba(255,255,255,0.7);
+      padding: 1.5rem;
+      margin-top: 4rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      form {
+        padding: 1.8rem;
+      }
+      .back-link {
+        margin-left: 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Share Your Story</h1>
+    <p>Every voice matters. Share your story, tradition, or memory to help preserve Kenya’s cultural heritage for generations.</p>
+  </header>
+
+  <a href="stories.html" class="back-link">← Back to Stories</a>
+
+  <form id="storyForm" enctype="multipart/form-data">
+    <label for="name">Your Name (optional)</label>
+    <input type="text" id="name" name="name" placeholder="e.g., Wanja N." />
+
+    <label for="community">Community / Ethnic Group</label>
+    <input type="text" id="community" name="community" placeholder="e.g., Kikuyu, Luhya, Maasai, Swahili..." required />
+
+    <label for="region">Region / County</label>
+    <input type="text" id="region" name="region" placeholder="e.g., Nyeri County, Mombasa..." required />
+
+    <label for="storyTitle">Story Title</label>
+    <input type="text" id="storyTitle" name="storyTitle" placeholder="e.g., The Dance of the Rain" required />
+
+    <label for="storyType">Story Type</label>
+    <select id="storyType" name="storyType">
+      <option value="myth">Myth / Legend</option>
+      <option value="oral-history">Oral History / Interview</option>
+      <option value="cultural-practice">Cultural Practice</option>
+      <option value="modern-voice">Modern Reflection</option>
+    </select>
+
+    <label for="story">Your Story</label>
+    <textarea id="story" name="story" rows="8" placeholder="Write your story here..." required></textarea>
+
+    <label for="photo">Attach Photo (optional)</label>
+    <input type="file" id="photo" name="photo" accept="image/*" />
+
+    <label for="audio">Attach Audio Recording (optional)</label>
+    <input type="file" id="audio" name="audio" accept="audio/*" />
+
+    <button type="submit">Submit Story</button>
+  </form>
+
+</body>
+</html>
+
+
+<script>
+  const JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiI0MzgzZjM1Zi1iNDgxLTRjYTctYmE0NS03OGM3NWNjOWYzYzEiLCJlbWFpbCI6ImFsaWNpYS5nZW5lMThAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjEsImlkIjoiRlJBMSJ9LHsiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjEsImlkIjoiTllDMSJ9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6IjQxNjFhZTQyYTc5MzQ1NjYxOTdmIiwic2NvcGVkS2V5U2VjcmV0IjoiY2E4ODJmZjlhYTJmY2ZmZmUxOTg4MmY2YTdiNjkzN2ViNmU5MWY4ZjJmYjIxNTEyZDQ5MGY3NGFjYWRhNDcwNiIsImV4cCI6MTc5MjU4NDAzNH0.Zj4eVuVDJ9mcX5oO_bFmIOs1QNzhHcWwudmS4Qe2Qxs"; 
+
+  const storyForm = document.getElementById("storyForm");
+
+  storyForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const button = e.target.querySelector("button");
+    button.textContent = "Uploading...";
+    button.disabled = true;
+
+    const name = document.getElementById("name").value;
+    const community = document.getElementById("community").value;
+    const region = document.getElementById("region").value;
+    const storyTitle = document.getElementById("storyTitle").value;
+    const storyType = document.getElementById("storyType").value;
+    const storyText = document.getElementById("story").value;
+    const photo = document.getElementById("photo").files[0];
+    const audio = document.getElementById("audio").files[0];
+
+    async function uploadFile(file) {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch("https://api.pinata.cloud/pinning/pinFileToIPFS", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${JWT}`,
+        },
+        body: formData,
+      });
+
+      const data = await res.json();
+      return data.IpfsHash;
+    }
+
+    let photoHash = null;
+    let audioHash = null;
+
+    if (photo) {
+      photoHash = await uploadFile(photo);
+    }
+    if (audio) {
+      audioHash = await uploadFile(audio);
+    }
+
+    const storyData = {
+      name,
+      community,
+      region,
+      storyTitle,
+      storyType,
+      storyText,
+      photoIPFS: photoHash ? `https://gateway.pinata.cloud/ipfs/${photoHash}` : null,
+      audioIPFS: audioHash ? `https://gateway.pinata.cloud/ipfs/${audioHash}` : null,
+      date: new Date().toISOString(),
+    };
+
+    const res = await fetch("https://api.pinata.cloud/pinning/pinJSONToIPFS", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${JWT}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(storyData),
+    });
+
+    const result = await res.json();
+
+    alert("🎉 Story uploaded successfully!\n\nView it on IPFS:\nhttps://gateway.pinata.cloud/ipfs/" + result.IpfsHash);
+
+    button.textContent = "Submit Story";
+    button.disabled = false;
+    storyForm.reset();
+  });
+</script>
+</body>
+</html>
+
+
+
+</body>
+</html>

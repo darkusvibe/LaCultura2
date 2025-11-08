@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stories | Kenyan Cultures</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-dark: #111;
+  --text-light: #eee;
+  --accent1: #FF7F00;
+  --accent2: #009444;
+  --accent3: #E63946;
+  --card-bg: rgba(255,255,255,0.05);
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-light);
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  height: 60vh;
+  background: url('images/mountkenya.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+.hero h1 {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 2.8rem;
+  color: var(--accent1);
+}
+.hero p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Filter Section */
+.filter-container {
+  text-align: center;
+  margin: 2.5rem 0 2rem;
+}
+
+.filter-container label {
+  font-weight: 600;
+  color: var(--accent1);
+  margin-right: 0.5rem;
+}
+
+select {
+  padding: 0.7rem 2.2rem 0.7rem 1.2rem; /* extra right padding for arrow space */
+  border-radius: 8px;
+  border: 1px solid var(--accent2);
+  background: linear-gradient(135deg, rgba(0,148,68,0.2), rgba(255,127,0,0.2));
+  color: var(--text-light);
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  outline: none;
+  width: 260px;
+  position: relative;
+
+  /* make sure system arrow stays hidden */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* add fallback arrow background (for Safari / Chrome) */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23FFFFFF" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  background-color: transparent;
+  z-index: 1;
+}
+
+/* make sure background never overrides the arrow */
+select:hover,
+select:focus {
+  border-color: var(--accent1);
+  box-shadow: 0 0 6px var(--accent1);
+  background: linear-gradient(135deg, rgba(255,127,0,0.3), rgba(0,148,68,0.3));
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23FFFFFF" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  cursor: pointer;
+}
+
+/* Dropdown options styling */
+select option {
+  background-color: #111;
+  color: #fff;
+  padding: 0.6rem;
+  font-family: 'Poppins', sans-serif;
+}
+select option:hover {
+  background-color: var(--accent1);
+  color: #111;
+}
+
+
+/* Hover */
+select:hover {
+  border-color: var(--accent1);
+  background: linear-gradient(135deg, rgba(255,127,0,0.3), rgba(0,148,68,0.3));
+  cursor: pointer;
+}
+
+/* Focus */
+select:focus {
+  border-color: var(--accent1);
+  box-shadow: 0 0 6px var(--accent1);
+}
+
+/* Dropdown options */
+select option {
+  background-color: #111;
+  color: #fff;
+  padding: 0.6rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Optional hover effect for dropdown items */
+select option:hover {
+  background-color: var(--accent1);
+  color: #111;
+}
+
+
+/* Hover */
+select:hover {
+  border-color: var(--accent1);
+  background: linear-gradient(135deg, rgba(255,127,0,0.3), rgba(0,148,68,0.3));
+  cursor: pointer;
+}
+
+/* Focus */
+select:focus {
+  border-color: var(--accent1);
+  box-shadow: 0 0 6px var(--accent1);
+}
+
+/* Dropdown options */
+select option {
+  background-color: #111;
+  color: #fff;
+  padding: 0.6rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Optional hover effect for options */
+select option:hover {
+  background-color: var(--accent1);
+  color: #111;
+}
+
+/* Story grid */
+.stories-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap: 1.5rem;
+  padding: 0 5% 4rem;
+}
+.story-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .3s;
+}
+.story-card:hover { transform: translateY(-6px); }
+.story-card img {
+  width: 100%; height: 220px; object-fit: cover;
+}
+.story-content {
+  padding: 1.2rem;
+}
+.story-content h3 {
+  font-family: 'Cinzel Decorative', cursive;
+  color: var(--accent1);
+}
+.story-content p {
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+}
+.story-content a {
+  display: inline-block;
+  background: linear-gradient(90deg,var(--accent2),var(--accent1));
+  padding: .6rem 1.2rem;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: .6rem;
+}
+
+/* Submit Story Section */
+.submit-story-container {
+  text-align: center;
+  background: rgba(255,255,255,0.05);
+  padding: 3rem 1.5rem;
+  border-top: 2px solid var(--accent1);
+  border-bottom: 2px solid var(--accent2);
+  margin: 3rem 8% 2rem;
+  border-radius: 12px;
+}
+.submit-story-container h3 {
+  font-family: 'Cinzel Decorative', cursive;
+  color: var(--accent1);
+  font-size: 1.8rem;
+  margin-bottom: .5rem;
+}
+.submit-story-container p {
+  color: rgba(255,255,255,0.85);
+  max-width: 650px;
+  margin: 0 auto 1.2rem;
+  line-height: 1.6;
+}
+.submit-button {
+  display: inline-block;
+  background: linear-gradient(90deg,var(--accent2),var(--accent1));
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s, opacity 0.3s;
+}
+.submit-button:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 2.5rem 0 2rem;
+}
+
+.back-home-btn {
+  position: absolute;
+  left: 5%;
+  background: linear-gradient(90deg, var(--accent2), var(--accent1));
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.back-home-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Stories of Kenyan Culture</h1>
+    <p>Every community carries stories that define its spirit. Here we share the voices, myths, and memories that keep Kenya’s diverse cultures alive.</p>
+  </div>
+</section>
+
+<div class="filter-container">
+  <a href="../index.html" class="back-home-btn">← Back to Home</a>
+  <select id="categoryFilter" onchange="filterStories()">
+    <option value="all">All Categories</option>
+    <option value="myths">Myths & Legends</option>
+    <option value="heroes">Heroes & Heroines</option>
+    <option value="practices">Cultural Practices</option>
+    <option value="language">Language & Proverbs</option>
+    <option value="modern">Modern Voices</option>
+  </select>
+</div>
+
+<main class="stories-container">
+ 
+   <!-- 🏔️ Myths & Legends -->
+<div class="story-card" data-category="myths">
+  <img src="images/mountkenya.jpg" alt="Mount Kenya legend">
+  <div class="story-content">
+    <h3>The Legend of Mount Kenya</h3>
+    <p>Among the Kikuyu, Mount Kenya (Kirinyaga) is believed to be the home of Ngai, the Creator. Elders would face the mountain during prayers, seeking blessings of rain and harvest.</p>
+    <a href="legend-of-mount-kenya.html">Read More</a>
+  </div>
+</div>
+
+<div class="story-card" data-category="myths">
+  <img src="images/victoria.jpeg" alt="The origin of Lake Victoria">
+  <div class="story-content">
+    <h3>The Origin of Lake Victoria</h3>
+    <p>A Luo legend tells of a great flood that formed the lake as a punishment from the spirits for human greed. When humility returned, the waters calmed, leaving behind the great lake.</p>
+    <a href="lake-victoria-legend.html">Read More</a>
+  </div>
+</div>
+
+<div class="story-card" data-category="myths">
+  <img src="images/maumau.png" alt="Ogiek forest spirits">
+  <div class="story-content">
+    <h3>Spirits of the Mau Forest</h3>
+    <p>The Ogiek believe that the forest is alive with ancestral spirits who protect the trees and punish those who harm nature without reason.</p>
+    <a href="spirits-mau-forest.html">Read More</a>
+  </div>
+</div>
+
+<!-- 🦸 Heroes & Heroines -->
+<div class="story-card" data-category="heroes">
+  <img src="images/mekatilili.jpeg" alt="Mekatilili wa Menza">
+  <div class="story-content">
+    <h3>The Courage of Mekatilili wa Menza</h3>
+    <p>A fearless Giriama woman who led her people against colonial oppression in 1913. Her story remains a symbol of strength and defiance in the fight for cultural freedom.</p>
+    <a href="mekatilili.html">Read More</a>
+  </div>
+</div>
+
+<div class="story-card" data-category="heroes">
+  <img src="images/koitalel.jpeg" alt="Koitalel arap Samoei">
+  <div class="story-content">
+    <h3>Koitalel Arap Samoei: The Seer of Nandi</h3>
+    <p>Koitalel led the Nandi resistance against British invasion in the early 1900s, guided by prophecy and unwavering faith in his people’s freedom.</p>
+    <a href="koitalel.html">Read More</a>
+  </div>
+</div>
+
+<div class="story-card" data-category="heroes">
+  <img src="images/kimathi.jpg" alt="Dedan Kimathi portrait">
+  <div class="story-content">
+    <h3>Dedan Kimathi: The Spirit of the Mau Mau</h3>
+    <p>A revolutionary leader whose courage became a beacon of Kenya’s independence movement. His legacy endures as a symbol of sacrifice and justice.</p>
+    <a href="dedan-kimathi.html">Read More</a>
+  </div>
+</div>
+
+<!-- 🪘 Cultural Practices -->
+<div class="story-card" data-category="practices">
+  <img src="images/dance.jpg" alt="Traditional dance">
+  <div class="story-content">
+    <h3>Rhythms of the Luhya Drum</h3>
+    <p>The beat of the Isukuti drum brings people together — it’s a heartbeat of celebration, unity, and storytelling passed down generations.</p>
+    <a href="luhya-drum.html">Read More</a>
+  </div>
+</div>
+
+<div class="story-card" data-category="practices">
+  <img src="images/samburu.jpg" alt="Samburu rites of passage">
+  <div class="story-content">
+    <h3>Rites of Passage Among the Samburu</h3>
+    <p>The Samburu initiation ceremonies mark the transition from youth to adulthood, celebrating courage, endurance, and the preservation of tradition.</p>
+    <a href="samburu-rites.html">Read More</a>
+  </div>
+</div>
+
+<div class="story-card" data-category="practices">
+  <img src="images/kikuyu-dowry.jpg" alt="Kikuyu marriage traditions">
+  <div class="story-content">
+    <h3>Kikuyu Marriage Traditions</h3>
+    <p>Marriage in Kikuyu culture is a union between families, celebrated through dowry negotiations, blessings, and communal feasting.</p>
+    <a href="kikuyu-marriage.html">Read More</a>
+  </div>
+</div>
+
+<!-- 💬 Language & Proverbs -->
+<div class="story-card" data-category="language">
+  <img src="images/beads.jpg" alt="Maasai beadwork">
+  <div class="story-content">
+    <h3>The Language of Beads</h3>
+    <p>Each color in Maasai beadwork carries meaning — red for bravery, blue for the sky, white for purity. The artistry tells stories of love, status, and identity.</p>
+    <a href="language-of-beads.html">Read More</a>
+  </div>
+</div>
+
+<div class="story-card" data-category="language">
+  <img src="images/kamba.jpg" alt="Kamba Proverbs">
+  <div class="story-content">
+    <h3>Wisdom in Kamba Proverbs</h3>
+    <p>“Mûndû ni ûtethio wake” — a person is defined by their actions. The Kamba use proverbs to teach integrity, respect, and humility across generations.</p>
+    <a href="kamba-proverbs.html">Read More</a>
+  </div>
+</div>
+
+<div class="story-card" data-category="language">
+  <img src="images/luo.jpg" alt="Luo Proverbs">
+  <div class="story-content">
+    <h3>The Poetry of Luo Proverbs</h3>
+    <p>Luo sayings carry rhythm and metaphor — teaching wisdom through humor and insight into human behavior and community values.</p>
+    <a href="luo-proverbs.html">Read More</a>
+  </div>
+</div>
+
+<!-- 🌍 Modern Voices -->
+<div class="story-card" data-category="modern">
+  <img src="images/nairobi-art.jpg" alt="Nairobi street art">
+  <div class="story-content">
+    <h3>Voices of Nairobi Street Art</h3>
+    <p>Kenya’s youth express modern identity through murals and graffiti that speak of heritage, justice, and pride in cultural roots.</p>
+    <a href="nairobi-streetart.html">Read More</a>
+  </div>
+</div>
+
+<div class="story-card" data-category="modern">
+  <img src="images/afro-fusion.jpg" alt="Afro-fusion artist performing">
+  <div class="story-content">
+    <h3>The Rise of Afro-Fusion</h3>
+    <p>Artists across Kenya blend traditional rhythms with modern sound — creating music that bridges the past and future of African creativity.</p>
+    <a href="the-rise-of-afro-fusion.html">Read More</a>
+  </div>
+</div>
+
+<div class="story-card" data-category="modern">
+  <img src="images/global.jpg" alt="Youth environmental movement">
+  <div class="story-content">
+    <h3>Voices for the Environment</h3>
+    <p>A new generation of environmental activists blends indigenous conservation wisdom with modern advocacy to protect Kenya’s land.</p>
+    <a href="voices-for-the-environment.html">Read More</a>
+  </div>
+</div>
+
+</main>
+
+<!-- Submit Story Section -->
+<div class="submit-story-container">
+  <h3>Have a Story to Share?</h3>
+  <p>We’d love to feature your story about Kenya’s rich culture. Whether it’s a family legend, a community tradition, or a modern voice — share it with the world!</p>
+  <a href="submit-story.html" class="submit-button">📜 Submit Your Story</a>
+</div>
+
+<script>
+function filterStories(){
+  const value=document.getElementById("categoryFilter").value;
+  document.querySelectorAll(".story-card").forEach(s=>{
+    s.style.display=(value==="all"||s.dataset.category===value)?"block":"none";
+  });
+}
+</script>
+</body>
+</html>
+
