@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Traditional Attire</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #f5f5f5;
+       font-family: "Font Name", Georgia, serif;
+      margin: 0;
+      padding: 0;
+    }
+h1 {
+      text-align: left;
+      color: #ff6600;
+      font-size: 2em;
+      padding: 20px 40px;
+      border-bottom: 2px solid #333;
+    }
+
+    .attire-section {
+      border-bottom: 1px solid #333;
+      padding: 20px 40px;
+      margin: 0 auto;
+      max-width: 900px;
+    }
+
+    .attire-title {
+      color: #ff6600;
+      text-transform: uppercase;
+      font-size: 1.4em;
+      margin-top: 10px;
+    }
+
+    .attire-desc {
+      color: #ccc;
+      margin-top: 8px;
+      font-size: 1em;
+      line-height: 1.6;
+    }
+
+    .attire-buttons {
+      margin-top: 10px;
+    }
+
+    .attire-buttons button {
+      padding: 8px 16px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .learn-btn {
+      background-color: #0ac60a;
+      color: #fff;
+    }
+
+    .learn-btn:hover {
+      background-color: #099e09;
+    }
+
+    .buy-btn {
+      background-color: #ff4d4d;
+      color: #fff;
+    }
+
+    .buy-btn:hover {
+      background-color: #e33b3b;
+    }
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 6px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* Hidden "Learn More" text */
+    .more-info {
+      display: none;
+      margin-top: 10px;
+      color: #aaa;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1>👘 Traditional Attire</h1>
+
+  <!-- Maasai -->
+  <section class="attire-section">
+    <img src="maasai.jfif" alt="Maasai Shuka">
+    <h2 class="attire-title">Maasai Shuka</h2>
+    <p class="attire-desc">
+      Iconic red shuka worn by Maasai warriors and elders.
+    </p>
+    <div class="attire-buttons">
+      <button class="learn-btn" onclick="toggleInfo('maasai-info')">Learn More</button>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+    <p id="maasai-info" class="more-info">
+      The Maasai Shuka is a thick, red or checkered fabric symbolizing courage and unity.
+      It’s traditionally believed to scare away lions and is worn during ceremonies and everyday life.
+      The shuka has become an iconic piece of African identity, blending tradition and global fashion.
+    </p>
+  </section>
+
+  <!-- Kikuyu -->
+  <section class="attire-section">
+    <img src="kikuyu.png" alt="Kikuyu Garments">
+    <h2 class="attire-title">Kikuyu Garments</h2>
+    <p class="attire-desc">
+      Made from animal skins, decorated with cowrie shells.
+    </p>
+    <div class="attire-buttons">
+      <button class="learn-btn" onclick="toggleInfo('kikuyu-info')">Learn More</button>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+    <p id="kikuyu-info" class="more-info">
+      Kikuyu traditional attire features animal hides softened and decorated with shells and beads.
+      Worn during rituals, weddings, and dances, it symbolizes beauty, fertility, and respect for nature.
+    </p>
+  </section>
+
+  <!-- Swahili -->
+  <section class="attire-section">
+    <img src="swahili.png" alt="Swahili Kanzu">
+    <h2 class="attire-title">Swahili Kanzu</h2>
+    <p class="attire-desc">
+      A long white robe worn by Swahili men, often during ceremonies.
+    </p>
+    <div class="attire-buttons">
+      <button class="learn-btn" onclick="toggleInfo('swahili-info')">Learn More</button>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+    <p id="swahili-info" class="more-info">
+      The Swahili Kanzu is a graceful ankle-length robe often paired with a kofia (cap).
+      It represents modesty and elegance, especially during weddings and religious celebrations.
+    </p>
+  </section>
+
+  <!-- Luo -->
+  <section class="attire-section">
+    <img src="luo.png" alt="Luo Traditional Attire">
+    <h2 class="attire-title">Luo Traditional Attire</h2>
+    <p class="attire-desc">
+      Outfits adorned with beaded accessories.
+    </p>
+    <div class="attire-buttons">
+      <button class="learn-btn" onclick="toggleInfo('luo-info')">Learn More</button>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+    <p id="luo-info" class="more-info">
+      Luo attire showcases bold fabrics and detailed beadwork symbolizing status and celebration.
+      It reflects a proud heritage, often worn during cultural festivals and weddings.
+    </p>
+  </section>
+
+  <!-- Kalenjin -->
+  <section class="attire-section">
+    <img src="kalenjin.jpg" alt="Kalenjin Traditional Wear">
+    <h2 class="attire-title">Kalenjin Traditional Wear</h2>
+    <p class="attire-desc">
+      Traditionally made from hides and adorned with beadwork.
+    </p>
+    <div class="attire-buttons">
+      <button class="learn-btn" onclick="toggleInfo('kalenjin-info')">Learn More</button>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+    <p id="kalenjin-info" class="more-info">
+      The Kalenjin attire represents strength and maturity, especially during initiation rites.
+      Beads, feathers, and cowhide signify bravery and connection to ancestral traditions.
+    </p>
+  </section>
+
+  <!-- Luhya -->
+  <section class="attire-section">
+    <img src="luhya.png" alt="Luhya Traditional Attire">
+    <h2 class="attire-title">Luhya Traditional Attire</h2>
+    <p class="attire-desc">
+      Colorful outfits with cowrie shells and bead necklaces.
+    </p>
+    <div class="attire-buttons">
+      <button class="learn-btn" onclick="toggleInfo('luhya-info')">Learn More</button>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+    <p id="luhya-info" class="more-info">
+      Luhya attire emphasizes community and unity. The bright fabrics and ornaments
+      are worn in weddings and dances, expressing joy and cultural pride.
+    </p>
+  </section>
+
+  <!-- Kisii -->
+  <section class="attire-section">
+    <img src="kisii.png" alt="Kisii Traditional Attire">
+    <h2 class="attire-title">Kisii Traditional Attire</h2>
+    <p class="attire-desc">
+      Attire made from hides or kitenge fabric, often with beadwork.
+    </p>
+    <div class="attire-buttons">
+      <button class="learn-btn" onclick="toggleInfo('kisii-info')">Learn More</button>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+    <p id="kisii-info" class="more-info">
+      Kisii traditional wear combines earth tones and patterns symbolizing resilience and beauty.
+      It includes beadwork, headdresses, and wraps worn during cultural festivals and ceremonies.
+    </p>
+  </section>
+
+  <script>
+    // Toggle hidden description visibility
+    function toggleInfo(id) {
+      const info = document.getElementById(id);
+      info.style.display = info.style.display === "block" ? "none" : "block";
+    }
+  </script>
+</body>
+</html>
